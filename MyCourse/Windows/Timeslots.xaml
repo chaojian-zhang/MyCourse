@@ -1,0 +1,62 @@
+﻿<Window x:Class="MyCourse.Windows.Timeslots"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCourse.Windows"
+        mc:Ignorable="d" Style="{StaticResource ToolWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Time Slots" Height="300" Width="280" Icon="/MyCourse;component/Icons/Time.png">
+    <Window.Resources>
+        <Style x:Key="TimeSlotDataGrid" TargetType="DataGrid">
+            <Setter Property="CanUserAddRows" Value="True"/>
+            <Setter Property="CanUserDeleteRows" Value="true"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+        </Style>
+        <Style x:Key="GroupHeaderStyle" TargetType="GroupItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupItem">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}"/>
+                            <ItemsPresenter/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DataGrid x:Name="TimeSlotsList" Style="{StaticResource TimeSlotDataGrid}" CanUserSortColumns="False"
+                  LoadingRow="TimeSlotsList_LoadingRow" AddingNewItem="TimeSlotsList_AddingNewItem" SelectionChanged="TimeSlotsList_SelectionChanged"
+                  CellEditEnding="TimeSlotsList_CellEditEnding" CurrentCellChanged="TimeSlotsList_CurrentCellChanged">
+            <DataGrid.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <DataGridRowsPresenter/>
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+            <!-- Data Grid Column Definitions -->
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Header="Type" Width="75" SelectedItemBinding="{Binding Type}"
+                                        ItemsSource="{Binding Source={StaticResource TimeslotTypeEnum}}"/>
+                <DataGridComboBoxColumn Header="Availability" SelectedItemBinding="{Binding Availability}"
+                                        ItemsSource="{Binding Source={StaticResource AvailabilityEnum}}"/>
+                <DataGridTextColumn Header="Section Code" Binding="{Binding SectionCode}"/>
+                <DataGridComboBoxColumn Header="Day" Width="75" SelectedItemBinding="{Binding Day}"
+                                        ItemsSource="{Binding Source={StaticResource DayEnum}}"/>
+                <DataGridTextColumn Header="Start Time" Binding="{Binding StartTimeText}"/>
+                <DataGridTextColumn Header="Time Span (in hours)" Binding="{Binding TimeSpan}"/>
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}"/>
+                <DataGridTextColumn Header="Professors" Binding="{Binding Professors}"/>
+                <DataGridTextColumn Header="Extra Notes" Binding="{Binding ExtraNotes}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

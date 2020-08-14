@@ -1,0 +1,12 @@
+﻿<Window x:Class="MyCourse.UTEngineeringCEAB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCourse"
+        mc:Ignorable="d" Closing="Window_Closing" Style="{StaticResource ToolWindow}"
+        Title="UT Engineering CEAB Units" Height="300" Width="300" Icon="/MyCourse;component/Icons/UTEngineering.png">
+    <Grid>
+        <Label Content="Pending Implementation" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="55"/>
+    </Grid>
+</Window>

@@ -1,0 +1,156 @@
+﻿<Window x:Class="MyCourse.CourseDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCourse"
+        mc:Ignorable="d" Closing="Window_Closing"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Style="{StaticResource ToolWindow}"
+        Title="Course Detail" Width="350" Height="400" Icon="/MyCourse;component/Icons/Detail.png">
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="Field" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+        <Style x:Key="Content" TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style x:Key="GridField" TargetType="Label">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="GridContent" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="LargeTextBox" TargetType="TextBox">
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel DataContext="{Binding Course}" Margin="0,0,5,0">
+        <!-- Title -->
+        <Grid>
+            <Label Content="{Binding CourseName}" Style="{StaticResource Title}" FontSize="24" HorizontalAlignment="Left"/>
+            <Grid Width="32" Height="32" Background="Transparent"   MouseDown="Image_MouseDown" HorizontalAlignment="Right" Margin="4">
+                <Image Cursor="Hand" Source="/MyCourse;component/Icons/Pin.png" Width="32" Height="32"/>
+                <Label x:Name="UnpinLabel" Content="X" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+            </Grid>
+        </Grid>
+        <!-- Description -->
+        <DockPanel LastChildFill="True">
+            <Label  HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Content="Description" Style="{StaticResource Field}"/>
+            <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="125"
+                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LargeTextBox}"/>
+        </DockPanel>
+        <!-- Prerequisites -->
+        <DockPanel LastChildFill="True">
+            <Label Content="Prerequisites" Style="{StaticResource Field}"/>
+            <TextBox Text="{Binding PrerequisitesText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LargeTextBox}"/>
+        </DockPanel>
+        <!-- Co-requisites -->
+        <DockPanel LastChildFill="True">
+            <Label Content="Co-requisites" Style="{StaticResource Field}"/>
+            <TextBox Text="{Binding CorequisitesText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LargeTextBox}"/>
+        </DockPanel>
+        <!-- Exclusions -->
+        <DockPanel LastChildFill="True">
+            <Label Content="Exclusions" Style="{StaticResource Field}"/>
+            <TextBox Text="{Binding ExclusionsText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LargeTextBox}"/>
+        </DockPanel>
+        <!-- Distribution Information -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Course Delivery" Grid.Row="0" Style="{StaticResource Field}"/>
+            <Label Content="CEAB AU" Grid.Row="1" Style="{StaticResource Field}"/>
+            <!-- Course Delivery -->
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Fall -->
+                <StackPanel Grid.Column="0" >
+                    <Label Content="Fall" Style="{StaticResource GridField}" Padding="0"/>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Lectures" Grid.Row="0" Grid.Column="0" Style="{StaticResource GridField}"/>
+                        <Label Content="Tutorials" Grid.Row="0" Grid.Column="1" Style="{StaticResource GridField}"/>
+                        <Label Content="Labs" Grid.Row="0" Grid.Column="2" Style="{StaticResource GridField}"/>
+                        <Label Content="{Binding FallLecturesCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding FallTutorialsCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding FallLabsCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <!-- Winter -->
+                <StackPanel Grid.Column="1">
+                    <Label Content="Winter" Style="{StaticResource GridField}" Padding="0"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Lectures" Grid.Row="0" Grid.Column="0" Style="{StaticResource GridField}"/>
+                        <Label Content="Tutorials" Grid.Row="0" Grid.Column="1" Style="{StaticResource GridField}"/>
+                        <Label Content="Labs" Grid.Row="0" Grid.Column="2" Style="{StaticResource GridField}"/>
+                        <Label Content="{Binding WinterLecturesCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding WinterTutorialsCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding WinterLabsCount, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Math" Grid.Row="0" Grid.Column="0" Style="{StaticResource GridField}"/>
+                <Label Content="NS" Grid.Row="0" Grid.Column="1" Style="{StaticResource GridField}"/>
+                <Label Content="CS" Grid.Row="0" Grid.Column="2" Style="{StaticResource GridField}"/>
+                <Label Content="ES" Grid.Row="0" Grid.Column="3" Style="{StaticResource GridField}"/>
+                <Label Content="ED" Grid.Row="0" Grid.Column="4" Style="{StaticResource GridField}"/>
+                <TextBox Text="{Binding AU.Math, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" TextAlignment="Center"/>
+                <TextBox Text="{Binding AU.NS, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" TextAlignment="Center"/>
+                <TextBox Text="{Binding AU.CS, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" TextAlignment="Center"/>
+                <TextBox Text="{Binding AU.ES, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" TextAlignment="Center"/>
+                <TextBox Text="{Binding AU.ED, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="4" TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</Window>

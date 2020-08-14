@@ -1,0 +1,94 @@
+﻿<Window x:Class="MyCourse.CourseLibrary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCourse"
+        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing"
+        Style="{StaticResource ToolWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Course Library" Height="650" Width="400" Icon="/MyCourse;component/Icons/Library.png">
+    <Window.Resources>
+        <Style x:Key="CourseDataGrid" TargetType="DataGrid">
+            <Setter Property="CanUserAddRows" Value="True"/>
+            <Setter Property="CanUserDeleteRows" Value="true"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="EnableColumnVirtualization" Value="True"/>
+        </Style>
+        <Style x:Key="GroupHeaderStyle" TargetType="GroupItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupItem">
+                        <Expander x:Name="GroupExpander" IsExpanded="True">
+                            <Expander.Header>
+                                <TextBlock Text="{Binding Name}"/>
+                            </Expander.Header>
+                            <ItemsPresenter/>
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DataGrid x:Name="CourseListGrid" Style="{StaticResource CourseDataGrid}" SelectionChanged="CourseListGrid_SelectionChanged"
+                  CurrentCellChanged="CourseListGrid_CurrentCellChanged" CellEditEnding="CourseListGrid_CellEditEnding"> 
+            <!-- Grouping Implemetnation Ref: http://www.c-sharpcorner.com/uploadfile/dpatra/grouping-in-datagrid-in-wpf/ -->
+            <!-- Grouping Information -->
+            <DataGrid.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <DataGridRowsPresenter/>
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+            <!-- Data Grid Column Definitions -->
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding IsInterested}">
+                    <DataGridCheckBoxColumn.Header>
+                        <Label Content="Interested" ToolTipService.InitialShowDelay="0" ToolTip="Whether we would like to take this course, e.g. for auto-generated time table."/>
+                    </DataGridCheckBoxColumn.Header>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding IsFinished}">
+                    <DataGridCheckBoxColumn.Header>
+                        <Label Content="Finished" ToolTipService.InitialShowDelay="0" ToolTip="Whether this course has been taken before."/>
+                    </DataGridCheckBoxColumn.Header>
+                </DataGridCheckBoxColumn>
+                <DataGridComboBoxColumn Header="Type" Width="55" SelectedItemBinding="{Binding Type}"
+                                        ItemsSource="{Binding Source={StaticResource CourseTypeEnum}}"/>
+                <DataGridTextColumn Header="Course Code" Width="120" Binding="{Binding CourseCode}"/>
+                <DataGridTextColumn Header="Title" Width="150" Binding="{Binding SubjectName}"/>
+                <DataGridTextColumn Header="Credit Weight" Binding="{Binding CreditWeight}"/>
+            </DataGrid.Columns>
+            <!-- Data Grid Expandable Details -->
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <!-- Description -->
+                        <TextBlock Text="{Binding Description}" Padding="4"/>
+                        <!-- Prerequisites -->
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Prerequisites: "/>
+                            <Label Content="{Binding PrerequisitesText}"/>
+                        </StackPanel>
+                        <!-- Availability -->
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Avaliability: "/>
+                            <Label Content="{Binding Avaliability}"/>
+                        </StackPanel>
+                        <!-- AUs -->
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="CEAB AUs: "/>
+                            <Label Content="{Binding CEABAUDescription}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </Grid>
+</Window>

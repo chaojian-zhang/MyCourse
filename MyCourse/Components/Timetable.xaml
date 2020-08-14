@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="MyCourse.Components.Timetable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyCourse.Components"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="1024" d:DesignWidth="768">
+    <UserControl.Resources>
+        <Style x:Key="GridLabelWithBorder" TargetType="Label">
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="ThinLine" TargetType="Rectangle">
+                <Setter Property="Stroke" Value="LightBlue"/>
+                <Setter Property="Fill" Value="Transparent"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <!-- Just Put -->
+        <Label Grid.Column="0" Grid.Row="0" Content="" Style="{StaticResource GridLabelWithBorder}"/>
+        <!-- Weekdays -->
+        <Label Grid.Column="1" Content="Monday" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Column="2" Content="Tuesday" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Column="3" Content="Wednesday" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Column="4" Content="Thursday" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Column="5" Content="Friday" Style="{StaticResource GridLabelWithBorder}"/>
+        <!-- Time Slots -->
+        <Label Grid.Row="1" Content="8:00 AM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="2" Content="9:00 AM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="3" Content="10:00 AM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="4" Content="11:00 AM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="5" Content="12:00 AM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="6" Content="1:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="7" Content="2:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="8" Content="3:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="9" Content="4:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="10" Content="5:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="11" Content="6:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="12" Content="7:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="13" Content="8:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <Label Grid.Row="14" Content="9:00 PM" Style="{StaticResource GridLabelWithBorder}"/>
+        <!-- Grid Lines: ShowGgridLine sucks at performance and style -->
+        <Rectangle Grid.Column="1" Grid.Row="1" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="1" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="1" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="1" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="1" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="2" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="2" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="2" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="2" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="2" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="3" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="3" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="3" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="3" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="3" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="4" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="4" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="4" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="4" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="4" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="5" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="5" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="5" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="5" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="5" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="6" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="6" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="6" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="6" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="6" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="7" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="7" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="7" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="7" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="7" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="8" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="8" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="8" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="8" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="8" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="9" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="9" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="9" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="9" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="9" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="10" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="10" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="10" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="10" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="10" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="11" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="11" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="11" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="11" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="11" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="12" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="12" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="12" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="12" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="12" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="13" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="13" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="13" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="13" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="13" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="1" Grid.Row="14" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="2" Grid.Row="14" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="3" Grid.Row="14" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="4" Grid.Row="14" Style="{StaticResource ThinLine}"/>
+        <Rectangle Grid.Column="5" Grid.Row="14" Style="{StaticResource ThinLine}"/>
+        <!-- Decorations -->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center"
+               Grid.RowSpan="15" Grid.ColumnSpan="6"
+               Foreground="Gray" FontSize="70"
+               Content="{Binding TermName}"/>
+        <!-- Dynamic Contents -->
+        <Grid x:Name="TimetableGrid" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+    </Grid>
+</UserControl>

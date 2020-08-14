@@ -1,0 +1,18 @@
+﻿Basic Functionality Specification:
+1. Provides information on all available courses, categorized
+2. Provides facilities to add and modify existing course informations
+3. Provides profile management and CERA checking much like magellan
+4. Provides real-time preview of changes and existing problems in portfolio
+5. Provides ultimate easy-to-use time table visualization
+
+Usage Convention:
+1. Course Code is just a string and supports spaces, but for our provided library we will use only ECE221H1 without 'F' or 'H' because it's already available in time slots; No just do it because that's how our university do it; Thus ECE221H1F and ECE221H1W are two courses if we do it this way
+
+CSV Table Import Steps:
+0. Source: http://undergrad.engineering.utoronto.ca/academics-registration/course-timetables/
+1. Table-to-spreadsheet chrome extension
+2. Manual merge and remove first line (headers)
+3. Import using tool into an ApplicationDataExportV1
+4. Import
+5. CS Timetbale: http://undergrad.engineering.utoronto.ca/academics-registration/electives/complementary-studies-cs-electives/
+6. Art&Science Timetable: 
